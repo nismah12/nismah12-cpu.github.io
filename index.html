@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Scraftology — Hijab Segiempat by Nismah Faruk</title>
+  <meta name="description" content="Scraftology - koleksi hijab segiempat modern. Pesan online, checkout cepat." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">
+      <div class="logo">🧕</div>
+      <div class="brand-text">
+        <div class="store-name">Scraftology</div>
+        <small class="owner">by Nismah Faruk</small>
+      </div>
+    </div>
+
+    <nav class="links" aria-label="Main navigation">
+      <a href="#hero">Beranda</a>
+      <a href="#menu">Koleksi</a>
+      <a href="#about">Tentang</a>
+      <a href="#checkout">Checkout</a>
+    </nav>
+
+    <div class="actions">
+      <button id="openCart" class="cart-btn" aria-label="Buka keranjang">🛒 <span id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <!-- Audio (place a small wav at assets/backsound.wav) -->
+  <audio id="bgm" loop preload="auto" src="assets/backsound.wav"></audio>
+  <button id="audioToggle" class="audio-toggle" aria-pressed="false" title="Putar / Hentikan musik">♪</button>
+
+  <!-- HERO (slider) -->
+  <section id="hero" class="hero">
+    <div class="slider" id="slider" role="region" aria-label="Slider produk Scraftology">
+      <div class="slides">
+        <div class="slide" style="--bg:url('https://images.unsplash.com/photo-1542060748-3480c4724a3e?q=80&w=1400&auto=format&fit=crop')">
+          <div class="slide-box">
+            <h1>Scraftology — Elegan & Lembut</h1>
+            <p>Hijab segiempat premium — warna modern, nyaman dipakai.</p>
+            <a class="btn primary" href="#menu">Lihat Koleksi</a>
+          </div>
+        </div>
+
+        <div class="slide" style="--bg:url('https://images.unsplash.com/photo-1619773913772-8190b8f2b6a8?q=80&w=1400&auto=format&fit=crop')">
+          <div class="slide-box">
+            <h1>Motif & Polos Pilihan</h1>
+            <p>Tekstur lembut, jahitan rapi, ukuran 110x110 cm.</p>
+            <a class="btn outline" href="#menu">Belanja Sekarang</a>
+          </div>
+        </div>
+
+        <div class="slide" style="--bg:url('https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=1400&auto=format&fit=crop')">
+          <div class="slide-box">
+            <h1>Hadiah yang Cantik</h1>
+            <p>Packing ready to gift — pesan custom untuk event.</p>
+            <a class="btn" href="#checkout">Checkout</a>
+          </div>
+        </div>
+      </div>
+
+      <button class="control prev" id="prev" aria-label="Sebelumnya">❮</button>
+      <button class="control next" id="next" aria-label="Berikutnya">❯</button>
+      <div class="dots" id="dots" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- PRODUCT GRID -->
+  <section id="menu" class="section">
+    <div class="section-head">
+      <h2>Koleksi Hijab Segiempat</h2>
+      <p>Pilih motif & warna favorit — bahan premium, nyaman seharian.</p>
+    </div>
+
+    <div id="menuGrid" class="menu-grid" aria-live="polite"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about">
+    <div class="about-card">
+      <h3>Tentang Scraftology</h3>
+      <p>Scraftology berdiri atas kecintaan pada kain berkualitas dan detail estetika. Dirancang supaya nyaman, cantik, dan tahan lama.</p>
+      <ul>
+        <li>Voal premium, satin, dan silk blend</li>
+        <li>Ukuran 110×110 cm (standard)</li>
+        <li>Packing rapi, siap jadi hadiah</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CHECKOUT -->
+  <section id="checkout" class="section checkout">
+    <div class="section-head">
+      <h2>Checkout</h2>
+      <p>Periksa pesanan dan lengkapi data pengiriman.</p>
+    </div>
+
+    <div class="checkout-wrap">
+      <div class="summary">
+        <h3>Ringkasan Pesanan</h3>
+        <div id="checkoutItems" class="checkout-items"></div>
+        <div class="totals">
+          <div><span>Subtotal</span><span id="subtotal">Rp0</span></div>
+          <div><span>Pajak (10%)</span><span id="tax">Rp0</span></div>
+          <div class="grand"><strong>Total</strong><strong id="grandTotal">Rp0</strong></div>
+        </div>
+
+        <a id="cartCheckout" class="btn outline full" href="#checkout">Cart Checkout</a>
+      </div>
+
+      <form id="checkoutForm" class="checkout-form" novalidate>
+        <h3>Data Pemesan</h3>
+        <label>Nama Lengkap
+          <input name="name" type="text" required placeholder="Nismah Faruk">
+        </label>
+        <label>Email
+          <input name="email" type="email" required placeholder="email@domain.com">
+        </label>
+        <label>Telepon
+          <input name="phone" type="tel" required placeholder="08xxxxxxxxxx">
+        </label>
+        <label>Alamat Pengiriman
+          <textarea name="address" rows="4" required placeholder="Jalan, Kota, Kode Pos"></textarea>
+        </label>
+        <label>Metode Pembayaran
+          <select name="payment" required>
+            <option value="">Pilih</option>
+            <option value="cod">COD</option>
+            <option value="transfer">Transfer Bank</option>
+            <option value="qris">QRIS</option>
+          </select>
+        </label>
+
+        <button type="submit" class="btn primary full">Buat Pesanan</button>
+        <p class="muted">(Simulasi checkout — tanpa pembayaran online)</p>
+      </form>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+  </section>
+
+  <!-- CART DRAWER -->
+  <aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
+    <div class="cart-header">
+      <h3>Keranjangmu</h3>
+      <button id="closeCart" class="icon-btn" aria-label="Tutup keranjang">✕</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>Total</span><strong id="cartTotal">Rp0</strong></div>
+      <div class="cart-actions">
+        <a href="#checkout" id="gotoCheckout" class="btn outline">Checkout</a>
+        <button id="clearCart" class="btn ghost">Kosongkan</button>
+      </div>
+    </div>
+  </aside>
+
+  <div id="overlay" class="overlay" hidden></div>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Scraftology — Nismah Faruk</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
