@@ -1,9 +1,9 @@
 
 const products = [
-  {id:'p1', name:'Hijab Voal - Soft Lilac', price:42000, img:'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop', desc:'Voal lembut, jatuh rapi.'},
-  {id:'p2', name:'Hijab Satin - Sky', price:55000, img:'https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop', desc:'Kilau subtle.'},
-  {id:'p3', name:'Hijab Motif - Floral Pastel', price:48000, img:'https://images.unsplash.com/photo-1520975910974-8d6e2d86b5b2?q=80&w=800&auto=format&fit=crop', desc:'Motif modern.'},
-  {id:'p4', name:'Hijab Linen Blend - Casual', price:39000, img:'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=800&auto=format&fit=crop', desc:'Nyaman seharian.'}
+  {id:'m1', name:'Classic Milk Pudding', price:28000, img:'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop', desc:'Puding susu klasik, lembut.'},
+  {id:'m2', name:'Strawberry Velvet', price:32000, img:'https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?q=80&w=800&auto=format&fit=crop', desc:'Rasa stroberi, topping buah.'},
+  {id:'m3', name:'Matcha Dream', price:35000, img:'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop', desc:'Matcha premium, rasa lembut.'},
+  {id:'m4', name:'Chocolate Lava Pudding', price:38000, img:'https://images.unsplash.com/photo-1603133872876-96e4d0e6b9e6?q=80&w=800&auto=format&fit=crop', desc:'Cokelat meleleh, sensasi hangat.'}
 ];
 
 // Slider
@@ -19,15 +19,15 @@ document.getElementById('slider').addEventListener('mouseenter', ()=>clearInterv
 function startAuto(){ timer = setInterval(next, 4500) } function stopAuto(){ clearInterval(timer) } function restart(){ stopAuto(); startAuto(); }
 buildDots(); startAuto();
 
-// Render products
+// Render menu
 const menuGrid = document.getElementById('menuGrid');
 const qty={};
 function renderMenu(){ menuGrid.innerHTML=''; products.forEach((p,i)=>{ qty[p.id]=1; const card=document.createElement('article'); card.className='card'; card.style.animationDelay=(i*80)+'ms'; card.innerHTML = `<img src="${p.img}" alt="${p.name}"><div class="info"><h3>${p.name}</h3><p>${p.desc}</p><div class="row"><div><strong>Rp${p.price.toLocaleString()}</strong></div><div style="display:flex;align-items:center;gap:8px"><div class="qty"><button onclick="changeQty('${p.id}',-1)">−</button><span id="q-${p.id}">1</span><button onclick="changeQty('${p.id}',1)">+</button></div><button class="btn primary" onclick="addToCart('${p.id}')">Tambah</button></div></div></div>`; menuGrid.appendChild(card); }); }
 function changeQty(id,delta){ qty[id]=Math.max(1,(qty[id]||1)+delta); const el=document.getElementById('q-'+id); if(el) el.textContent=qty[id]; }
 renderMenu();
 
-// Cart (localStorage)
-const KEY='scraftology_cart_v1';
+// Cart localStorage
+const KEY='meltedmood_cart_v1';
 function getCart(){ return JSON.parse(localStorage.getItem(KEY)||'[]'); }
 function saveCart(c){ localStorage.setItem(KEY, JSON.stringify(c)); updateCart(); renderCheckout(); }
 function addToCart(id){ const p=products.find(x=>x.id===id); if(!p) return; const cart=getCart(); const q=qty[id]||1; const idx=cart.findIndex(i=>i.id===id); if(idx>-1) cart[idx].qty+=q; else cart.push({id:p.id,name:p.name,price:p.price,img:p.img,qty:q}); saveCart(cart); showToast(p.name+' ditambahkan'); openCart(); }
@@ -40,10 +40,12 @@ document.getElementById('clearCart').addEventListener('click', ()=> saveCart([])
 function openCart(){ document.getElementById('cartDrawer').classList.add('open'); document.getElementById('overlay').hidden=false; }
 function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2600); }
 
-// Checkout render & submit
+// Checkout render & form
 function renderCheckout(){ const checkoutItems=document.getElementById('checkoutItems'); const cart=getCart(); checkoutItems.innerHTML=''; let subtotal=0; cart.forEach(i=>{ subtotal+=i.price*i.qty; const row=document.createElement('div'); row.className='checkout-item'; row.innerHTML=`<img src="${i.img}" alt="${i.name}"><div><div>${i.name}</div><div style="font-size:12px;color:#666">Rp${i.price.toLocaleString()} × ${i.qty}</div></div><div style="font-weight:700">Rp${(i.price*i.qty).toLocaleString()}</div>`; checkoutItems.appendChild(row); }); const tax=Math.round(subtotal*0.1); document.getElementById('subtotal').textContent=`Rp${subtotal.toLocaleString()}`; document.getElementById('tax').textContent=`Rp${tax.toLocaleString()}`; document.getElementById('grandTotal').textContent=`Rp${(subtotal+tax).toLocaleString()}`; }
 document.getElementById('checkoutForm').addEventListener('submit',(e)=>{ e.preventDefault(); const f=e.currentTarget; if(!f.reportValidity()) return; showToast('Pesanan dibuat! Kami hubungi via nomor Anda.'); saveCart([]); f.reset(); location.hash='hero'; });
+
 // Audio toggle
 const bgm=document.getElementById('bgm'); const audioToggle=document.getElementById('audioToggle'); audioToggle.addEventListener('click', ()=>{ if(bgm.paused){ bgm.play().catch(()=>{}); audioToggle.classList.add('active'); } else { bgm.pause(); audioToggle.classList.remove('active'); } });
+
 // init
 renderCheckout(); updateCart();
