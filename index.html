@@ -2,113 +2,75 @@
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Melted Mood — Puding Kekinian</title>
-  <meta name="description" content="Melted Mood - toko puding aesthetic oleh Nismah Faruk. Pesan online, checkout cepat." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Puddiland — Toko Puding</title>
+  <meta name="description" content="Puddiland - puding lezat harian. Alamat: Jl. Dipenegori 74, Bogor." />
+  <link rel="preload" href="assets/svg/logo.svg" as="image" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="nav">
     <div class="brand">
-      <div class="logo">🍮</div>
+      <img src="assets/svg/logo.svg" alt="Logo Puddiland" width="120" height="34">
       <div class="brand-text">
-        <div class="store-name">Melted Mood</div>
-        <small class="owner">by Nismah Faruk</small>
+        <div class="store-name">Puddiland</div>
+        <small class="tagline">Puding Lezat, Hati Senang</small>
       </div>
     </div>
-
-    <nav class="links" aria-label="Main navigation">
+    <nav class="links" aria-label="Navigasi utama">
       <a href="#hero">Beranda</a>
-      <a href="#menu">Menu</a>
-      <a href="#about">Tentang</a>
+      <a href="#best">Terlaris</a>
+      <a href="#testi">Testimoni</a>
+      <a href="#contact">Kontak</a>
       <a href="#checkout">Checkout</a>
     </nav>
-
     <div class="actions">
       <button id="openCart" class="cart-btn" aria-label="Buka keranjang">🛒 <span id="cartCount">0</span></button>
     </div>
   </header>
 
-  <!-- Audio backgound (short wav included) -->
-  <audio id="bgm" loop preload="auto" src="assets/backsound.wav"></audio>
-  <button id="audioToggle" class="audio-toggle" aria-pressed="false" title="Putar / Hentikan musik">♪</button>
-
-  <!-- HERO slider -->
   <section id="hero" class="hero">
-    <div class="slider" id="slider" role="region" aria-label="Slider promosi Melted Mood">
-      <div class="slides">
-        <div class="slide" style="--bg:url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1400&auto=format&fit=crop')">
-          <div class="slide-box">
-            <h1>Melted Mood — Puding Aesthetic</h1>
-            <p>Puding lembut, rasa menenangkan, tampilan instagrammable.</p>
-            <a class="btn primary" href="#menu">Lihat Menu</a>
-          </div>
-        </div>
-        <div class="slide" style="--bg:url('https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1400&auto=format&fit=crop')">
-          <div class="slide-box">
-            <h1>Varian Warna Pastel</h1>
-            <p>Rasa klasik dan modern — cocok untuk hadiah atau treat sendiri.</p>
-            <a class="btn outline" href="#menu">Pesan Sekarang</a>
-          </div>
-        </div>
-        <div class="slide" style="--bg:url('https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?q=80&w=1400&auto=format&fit=crop')">
-          <div class="slide-box">
-            <h1>Custom untuk Event</h1>
-            <p>Pesan custom untuk ulang tahun, baby shower, atau corporate gift.</p>
-            <a class="btn" href="#checkout">Checkout</a>
-          </div>
-        </div>
-      </div>
+    <div class="hero-inner">
+      <h1>Selamat datang di <span>Puddiland</span></h1>
+      <p>Puding lembut, manis pas, dibuat segar setiap hari.</p>
+      <a href="#best" class="btn primary">Lihat Produk Terlaris</a>
+    </div>
+  </section>
+
+  <section id="best" class="section best">
+    <div class="section-head">
+      <h2>Produk Terlaris</h2>
+      <p>Top 5 pilihan pelanggan.</p>
+    </div>
+    <div class="slider" id="slider" role="region" aria-label="Slider produk terlaris">
       <button class="control prev" id="prev" aria-label="Sebelumnya">❮</button>
+      <div class="slides" id="slides"></div>
       <button class="control next" id="next" aria-label="Berikutnya">❯</button>
       <div class="dots" id="dots" aria-hidden="true"></div>
     </div>
   </section>
 
-  <!-- MENU -->
-  <section id="menu" class="section">
-    <div class="section-head">
-      <h2>Menu Puding Favorit</h2>
-      <p>Sajian lembut dengan kombinasi rasa dan topping menarik.</p>
-    </div>
-    <div id="menuGrid" class="menu-grid" aria-live="polite"></div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="section about">
-    <div class="about-card">
-      <h3>Tentang Melted Mood</h3>
-      <p>Melted Mood dibuat dari bahan pilihan, tanpa pengawet, dan disajikan segar. Fokus kami: rasa lembut, tampilan cantik, dan pelayanan ramah.</p>
-      <ul>
-        <li>Bahan lokal & premium</li>
-        <li>Varian bebas lactose tersedia</li>
-        <li>Pesan custom & packing cantik</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- CHECKOUT -->
   <section id="checkout" class="section checkout">
     <div class="section-head">
       <h2>Checkout</h2>
-      <p>Periksa pesanan dan lengkapi data pengiriman.</p>
+      <p>Periksa keranjang dan isi data pengiriman.</p>
     </div>
     <div class="checkout-wrap">
       <div class="summary">
-        <h3>Ringkasan Pesanan</h3>
+        <h3>Ringkasan Keranjang</h3>
         <div id="checkoutItems" class="checkout-items"></div>
         <div class="totals">
           <div><span>Subtotal</span><span id="subtotal">Rp0</span></div>
           <div><span>Pajak (10%)</span><span id="tax">Rp0</span></div>
           <div class="grand"><strong>Total</strong><strong id="grandTotal">Rp0</strong></div>
         </div>
-        <a id="cartCheckout" class="btn outline full" href="#checkout">Cart Checkout</a>
+        <button id="cartCheckout" class="btn outline full">Checkout</button>
       </div>
 
       <form id="checkoutForm" class="checkout-form" novalidate>
         <h3>Data Pemesan</h3>
         <label>Nama Lengkap
-          <input name="name" type="text" required placeholder="Nismah Faruk">
+          <input name="name" type="text" required placeholder="Nama kamu">
         </label>
         <label>Email
           <input name="email" type="email" required placeholder="email@domain.com">
@@ -128,16 +90,57 @@
           </select>
         </label>
         <button type="submit" class="btn primary full">Buat Pesanan</button>
-        <p class="muted">(Simulasi checkout — tanpa pembayaran online)</p>
+        <p class="muted">Simulasi checkout — tanpa pembayaran online.</p>
       </form>
     </div>
     <div id="toast" class="toast" aria-live="polite"></div>
   </section>
 
-  <!-- CART DRAWER -->
+  <section id="testi" class="section testimonials">
+    <div class="section-head">
+      <h2>Testimoni Pelanggan</h2>
+      <p>Bagikan pengalamanmu dan baca ulasan lainnya.</p>
+    </div>
+    <div id="testiList" class="testi-list"></div>
+
+    <form id="testiForm" class="card form" novalidate>
+      <h3>Tulis Testimoni</h3>
+      <label>Nama
+        <input name="name" type="text" placeholder="Nama kamu" required>
+      </label>
+      <label>Rating
+        <select name="rating" required>
+          <option value="">Pilih rating</option>
+          <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
+        </select>
+      </label>
+      <label>Ulasan
+        <textarea name="message" rows="4" placeholder="Tulis ulasanmu..." required></textarea>
+      </label>
+      <button class="btn outline">Kirim Testimoni</button>
+    </form>
+  </section>
+
+  <section id="contact" class="section contact">
+    <div class="section-head">
+      <h2>Kritik & Saran</h2>
+      <p>Kami senang menerima masukanmu.</p>
+    </div>
+    <form id="feedbackForm" class="card form" novalidate>
+      <label>Nama (opsional)
+        <input name="name" type="text" placeholder="Nama">
+      </label>
+      <label>Pesan
+        <textarea name="message" rows="4" placeholder="Tulis kritik/saran..." required></textarea>
+      </label>
+      <button class="btn primary">Kirim</button>
+      <p class="muted">Alamat toko: <strong>Jl. Dipenegori 74, Bogor</strong></p>
+    </form>
+  </section>
+
   <aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
     <div class="cart-header">
-      <h3>Keranjangmu</h3>
+      <h3>Keranjang</h3>
       <button id="closeCart" class="icon-btn" aria-label="Tutup keranjang">✕</button>
     </div>
     <div id="cartItems" class="cart-items"></div>
@@ -149,11 +152,10 @@
       </div>
     </div>
   </aside>
-
   <div id="overlay" class="overlay" hidden></div>
 
   <footer class="footer">
-    <p>&copy; <span id="year"></span> Melted Mood — Nismah Faruk</p>
+    <p>&copy; <span id="year"></span> Puddiland • Jl. Dipenegori 74, Bogor</p>
   </footer>
 
   <script src="app.js"></script>

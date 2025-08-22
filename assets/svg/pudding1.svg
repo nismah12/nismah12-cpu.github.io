@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+  <rect width="320" height="200" fill="#ffffff"/>
+  <path d="M110 150 Q160 40 210 150 Z" fill="#8b5e3c"/>
+  <ellipse cx="160" cy="150" rx="52" ry="12" fill="#5a3a2e"/>
+  <path d="M125 100 Q160 120 195 100 Q188 124 160 135 Q132 124 125 100 Z" fill="#c19a6b"/>
+  <text x="20" y="30" font-family="Poppins, Arial" font-size="18" fill="#5a3a2e">Classic Choco</text>
+</svg>

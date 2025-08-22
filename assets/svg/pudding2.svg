@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+  <rect width="320" height="200" fill="#ffffff"/>
+  <path d="M90 150 Q160 50 230 150 Z" fill="#6b422d"/>
+  <ellipse cx="160" cy="150" rx="60" ry="12" fill="#4a2e24"/>
+  <path d="M105 105 Q160 130 215 105 Q206 132 160 144 Q114 132 105 105 Z" fill="#d2b48c"/>
+  <text x="20" y="30" font-family="Poppins, Arial" font-size="18" fill="#5a3a2e">Mocha Silk</text>
+</svg>

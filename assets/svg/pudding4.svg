@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+  <rect width="320" height="200" fill="#ffffff"/>
+  <path d="M95 150 Q160 55 225 150 Z" fill="#5a3a2e"/>
+  <ellipse cx="160" cy="150" rx="58" ry="12" fill="#35231c"/>
+  <path d="M115 115 Q160 130 205 115 Q198 134 160 145 Q122 134 115 115 Z" fill="#b8865b"/>
+  <text x="20" y="30" font-family="Poppins, Arial" font-size="18" fill="#5a3a2e">Almond Cream</text>
+</svg>

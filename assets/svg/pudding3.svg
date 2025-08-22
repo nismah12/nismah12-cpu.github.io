@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+  <rect width="320" height="200" fill="#ffffff"/>
+  <path d="M100 150 Q160 60 220 150 Z" fill="#7a4b33"/>
+  <ellipse cx="160" cy="150" rx="55" ry="12" fill="#3b261e"/>
+  <path d="M115 110 Q160 130 205 110 Q198 132 160 142 Q122 132 115 110 Z" fill="#e0c097"/>
+  <text x="20" y="30" font-family="Poppins, Arial" font-size="18" fill="#5a3a2e">Caramel Drip</text>
+</svg>
